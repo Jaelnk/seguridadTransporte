@@ -1,0 +1,60 @@
+{
+    "roles": [
+      {
+        "role_id": 1,
+        "name": "admin",
+        "state": "active"
+      },
+      {
+        "role_id": 2,
+        "name": "user",
+        "state": "active"
+      }
+    ],
+    "users": [
+      {
+        "user_id": 1,
+        "name": "John",
+        "role_id": 1
+      },
+      {
+        "user_id": 2,
+        "name": "Alice",
+        "role_id": 2
+      },
+      {
+        "user_id": 3,
+        "name": "Bob",
+        "role_id": 2
+      }
+    ],
+    "acceso": [
+      {
+        "id": 1,
+        "pantalla_id": 1,
+        "rol_id": 1,
+        "state": "active"
+      },
+      {
+        "id": 2,
+        "pantalla_id": 2,
+        "rol_id": 1,
+        "state": "active"
+      }
+    ],
+    "pantalla": [
+      {
+        "id": 1,
+        "nombre": "registro",
+        "url": "test/register",
+        "detalle": ""
+      },
+      {
+        "id": 2,
+        "nombre": "pantalla crear",
+        "url": "test/create",
+        "detalle": ""
+      }
+    ]
+  }
+  
