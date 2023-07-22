@@ -50,6 +50,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = () => {
+    Cookies.remove("token");
+    setUser(null);
+    setIsAuthenticated(false);
+  };
 
 
   useEffect(() => {
@@ -155,7 +160,8 @@ export const AuthProvider = ({ children }) => {
       loading,
       setIsAuthenticated,
       rutas,
-      routesData
+      routesData,
+      logout
       }} >
       {children}
     </AuthContext.Provider>
