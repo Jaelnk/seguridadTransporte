@@ -20,13 +20,6 @@ function RegistryPage() {
     }
   }, [routesData]);
 
-  useEffect(() => {
-    // rutas() devuelve los datos
-    //console.log("data: ", routesData);
-    setTimeout(() => {
-      setLoading(false); // Una vez completada la espera, cambiamos el estado a "false"
-    }, 1000);
-  }, [rutas, routesData]);
 
   const columns = useMemo(
     () => [

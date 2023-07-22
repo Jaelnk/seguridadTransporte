@@ -25,13 +25,6 @@ function IndexPage() {
       setLoading(false);
     }
   }, [screems]);
-  useEffect(() => {
-    //console.log("->screems: ", screems);
-    //console.log("->user: ", user);
-    setTimeout(() => {
-      setLoading(false); // Once the data is loaded, set loading to "false"
-    }, 1000);
-  }, [index, screems, user]);
 
   if (loading) {
     return <div>Cargando datos...</div>;
