@@ -1,15 +1,28 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useTable } from 'react-table';
-import { useAuth } from "../context/authContext";
+//import { useAuth } from "../context/authContext";
+import {useRequests} from "../context/requestsContext"
 
 function RegistryPage() {
-  const { rutas, routesData } = useAuth();
+  const { rutas, routesData } = useRequests();
   const [loading, setLoading] = useState(true); // Estado para controlar si los datos se están cargando o no
 
-  rutas();
+  useEffect(() => {
+    // Realizar la solicitud de rutas solo una vez cuando el componente se monta
+    rutas();
+  }, []); // El arreglo de dependencias está vacío para asegurarse de que se ejecute solo una vez
+
+  useEffect(() => {
+    // Cuando se actualizan los datos de rutas (routesData),
+    // cambiamos el estado de loading a false una vez que se reciben los datos
+    if (routesData) {
+      setLoading(false);
+    }
+  }, [routesData]);
+
   useEffect(() => {
     // rutas() devuelve los datos
-    console.log("data: ", routesData);
+    //console.log("data: ", routesData);
     setTimeout(() => {
       setLoading(false); // Una vez completada la espera, cambiamos el estado a "false"
     }, 1000);

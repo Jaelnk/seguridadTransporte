@@ -5,6 +5,8 @@ import IndexPage from "./pages/IndexPage"
 import RegistryPage from "./pages/RegistryPage"
 import { AuthProvider } from "./context/authContext";
 
+import {RequestProvider} from "./context/requestsContext"
+
 function App() {
 
   /*
@@ -18,6 +20,7 @@ function App() {
   */
   return (
     <AuthProvider>
+      <RequestProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<h1 className="text-3xl font-bold underline">Hello world!</h1> }/>
@@ -27,6 +30,8 @@ function App() {
           <Route path="/registry"  element={<RegistryPage/>}/>
         </Routes>
     </BrowserRouter>
+      </RequestProvider>
+      
     </AuthProvider>
 
   )

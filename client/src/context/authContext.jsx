@@ -55,10 +55,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
-      console.log(cookies)
+      /* console.log(cookies)
       console.log("token 2", cookies.token)
       console.log("usuario 2:", user)
-      console.log("auth 2:", isAuthenticated)
+      console.log("auth 2:", isAuthenticated) */
       
 /*       if (!cookies.token) {
         setIsAuthenticated(false);
@@ -66,9 +66,9 @@ export const AuthProvider = ({ children }) => {
         return;
       } */
       try {
-        console.log("verifing");
+        //console.log("verifing");
         const res = await verifyTokenRequest(cookies.token);
-        console.log("verify: ", res, " -cookie: ",cookies.token);
+        //console.log("verify: ", res, " -cookie: ",cookies.token);
 
         
 /*         const res1 = await indexRequest(cookies.token);
@@ -100,13 +100,13 @@ export const AuthProvider = ({ children }) => {
 
   const index = async () => {
     const cookies = Cookies.get();
-    console.log(cookies)
-    console.log("verifing cookie");
+    //console.log(cookies)
+    //console.log("verifing cookie");
     try {
       const res1 = await indexRequest(cookies.token);
-      console.log("-verified cookie: ", res1, " -cookie: ",cookies.token);
+      //console.log("-verified cookie: ", res1, " -cookie: ",cookies.token);
       if(res1.data=="No token, authorization denied"){
-        console.log(res1.data);
+        //console.log(res1.data);
         setIsAuthenticated(false);
         setLoading(false);
         return;
@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
 
       //if (!res1.data) return setIsAuthenticated(false);
       setScreem(res1.data);
-      console.log(res1.data);
+      //console.log(res1.data);
     } catch (error) {
       console.log("error veryfing cookie: ", error);
     }
@@ -123,11 +123,11 @@ export const AuthProvider = ({ children }) => {
 
   const rutas = async () => {
     const cookies = Cookies.get();
-    console.log(cookies)
-    console.log("verifing cookie");
+/*     console.log(cookies)
+    console.log("verifing cookie"); */
     try {
       const res2 = await RegistroRutasRequest(cookies.token);
-      console.log("verified cookie: ", res2, " -cookie: ",cookies.token);
+      //console.log("verified cookie: ", res2, " -cookie: ",cookies.token);
       if(res2.data=="No token, authorization denied"){
         console.log(res2.data);
         setIsAuthenticated(false);
@@ -137,7 +137,7 @@ export const AuthProvider = ({ children }) => {
 
       //if (!res1.data) return setIsAuthenticated(false);
       setRoutes(res2.data);
-      console.log(res2.data);
+      //console.log(res2.data);
     } catch (error) {
       console.log("error veryfing cookie: ", error);
     }

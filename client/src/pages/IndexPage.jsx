@@ -3,15 +3,28 @@ import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import RegistryPage from './RegistryPage';
 import RegisterPage from './RegisterPage';
+//import {useRequests} from "../context/requestsContext"
 
 function IndexPage() {
   const { user, setIsAuthenticated, screems, index } = useAuth();
+  
   const [showMenu, setShowMenu] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  index();
+  useEffect(() => {
+    // Realizar la solicitud de rutas solo una vez cuando el componente se monta
+    index();
+  }, []); // El arreglo de dependencias está vacío para asegurarse de que se ejecute solo una vez
+
+  useEffect(() => {
+    // Cuando se actualizan los datos de rutas (routesData),
+    // cambiamos el estado de loading a false una vez que se reciben los datos
+    if (screems) {
+      setLoading(false);
+    }
+  }, [screems]);
   useEffect(() => {
     //console.log("->screems: ", screems);
     //console.log("->user: ", user);
